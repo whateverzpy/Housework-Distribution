@@ -1,0 +1,3 @@
+<view class="logo">
+    <image src="/public/images/logo_horizontal.png" mode="aspectFit" alt="Application Logo"/>
+</view>

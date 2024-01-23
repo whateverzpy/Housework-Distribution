@@ -1,0 +1,26 @@
+{
+  "pages": [
+    
+    "pages/index/index",
+    "pages/inputitems/inputitems",
+    "pages/logs/logs"
+  ],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "Weixin",
+    "navigationBarBackgroundColor": "#ffffff"
+  },
+  "style": "v2",
+  "componentFramework": "glass-easel",
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents",
+
+  "tabBar": {
+    "custom": true,
+    "list": [
+      {
+        "pagePath": ""
+      }
+    ]
+  }
+}

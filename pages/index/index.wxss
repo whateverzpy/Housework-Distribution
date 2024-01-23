@@ -1,0 +1,28 @@
+/**index.wxss**/
+page {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  /* background-color: black; */
+}
+
+swiper {
+  width: 100%;
+  height: 700rpx;
+}
+
+.logo {
+  margin-top: -150px;
+  margin-bottom: -50px;
+}
+
+swiper-item {
+  display: flex;
+  justify-content: center;
+}
+
+button {
+  margin-top: 50px;
+  background-color: purple;
+  color: #fff;
+}

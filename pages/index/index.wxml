@@ -1,0 +1,28 @@
+<!--index.wxml-->
+<scroll-view class="scrollarea" scroll-y type="list">
+  <view class="container">
+  <header></header>
+  <swiper
+    indicator-dots="true"
+    indicator-active-color="purple"
+    autoplay="true"
+    interval="5000"
+    duration="500"
+    circular="true"
+    >
+    <swiper-item>
+      <image src="{{imgPath1}}" mode="aspectFit" />
+    </swiper-item>
+    <swiper-item>
+      <image src="{{imgPath2}}" mode="aspectFit"/>
+    </swiper-item>
+    <swiper-item>
+      <image src="{{imgPath3}}" mode="aspectFit"/>
+    </swiper-item>
+    <swiper-item>
+      <image src="{{imgPath4}}" mode="aspectFit"/>
+    </swiper-item>
+  </swiper>
+  <button bindtap="ToInputItems" class="begin">开始使用</button>
+</view>
+</scroll-view>
