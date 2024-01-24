@@ -3,6 +3,8 @@
     
     "pages/index/index",
     "pages/inputitems/inputitems",
+    "pages/mychoice/mychoice",
+    "pages/partnerchoice/partnerchoice",
     "pages/logs/logs"
   ],
   "window": {
@@ -19,8 +21,18 @@
     "custom": true,
     "list": [
       {
-        "pagePath": ""
+        "pagePath": "pages/inputitems/inputitems",
+        "text": "选择家务"
+      },{
+        "pagePath": "pages/mychoice/mychoice",
+        "text": "我的选择"
+      },{
+        "pagePath": "pages/partnerchoice/partnerchoice",
+        "text": "同伴选择"
       }
     ]
+  },
+  "usingComponents": {
+    "tabBar": "/custom-tab-bar/index"
   }
 }

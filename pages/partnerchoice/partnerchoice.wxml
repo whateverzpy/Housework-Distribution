@@ -1,7 +1,5 @@
 <scroll-view class="scrollarea" scroll-y type="list">
 	<view class="container">
-		<header></header>
-		<tab-bar></tab-bar>
-		<view>ceshi</view>
+		ceshi2
 	</view>
 </scroll-view>

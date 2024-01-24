@@ -6,8 +6,16 @@ Page({
     imgPath4: '/public/images/illust-4.png',
   },
   ToInputItems() {
-    wx.navigateTo({
+    wx.switchTab({
       url: '/pages/inputitems/inputitems',
     })
-  }
+  },
+  onShow() {
+    if (typeof this.getTabBar === 'function' &&
+      this.getTabBar()) {
+      this.getTabBar().setData({
+        selected: 0
+      })
+    }
+  }, 
 });

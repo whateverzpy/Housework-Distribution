@@ -23,6 +23,6 @@
       <image src="{{imgPath4}}" mode="aspectFit"/>
     </swiper-item>
   </swiper>
-  <button bindtap="ToInputItems" class="begin">开始使用</button>
+  <button bindtap="ToInputItems">开始使用</button>
 </view>
 </scroll-view>
