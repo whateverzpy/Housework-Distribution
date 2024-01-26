@@ -1,0 +1,41 @@
+<!--components/inputitems/inputitems.wxml-->
+<view class="input-row">
+    <text class="task-label">{{label}}</text>
+    <view class="toggle-button-group">
+        <radio-group onChange="updateIsDoingTask">
+            <label>
+                <radio value="{{true}}" checked="{{isDoingTask}}"/>做
+            </label>
+            <label>
+                <radio value="{{false}}" checked="{{!isDoingTask}}"/>不做
+            </label>
+        </radio-group>
+    </view>
+
+    <view class="toggle-button-group">
+        <radio-group onChange="updateHappyLevel">
+            <label>
+                <radio value="{{-1}}" checked="{{happyLevel === -1}}"/>
+                <image src="/public/images/unhappy.svg"/>
+            </label>
+            <label>
+                <radio value="{{0}}" checked="{{happyLevel === 0}}"/>
+                <image src="/public/images/neutral.svg"/>
+            </label>
+            <label>
+                <radio value="{{1}}" checked="{{happyLevel === 1}}"/>
+                <image src="/public/images/happy.svg"/>
+            </label>
+        </radio-group>
+    </view>
+
+    <slider 
+        class="update-task-time"
+        min="10"
+        max="90"
+        step="10"
+        show-value
+        value="{{taskTime}}"
+        onChange="updateTaskTime"
+    />
+</view>

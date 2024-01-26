@@ -1,11 +1,11 @@
 {
   "pages": [
-    
     "pages/index/index",
     "pages/inputitems/inputitems",
     "pages/mychoice/mychoice",
     "pages/partnerchoice/partnerchoice",
-    "pages/logs/logs"
+    "pages/logs/logs",
+    "pages/advice/advice"
   ],
   "window": {
     "navigationBarTextStyle": "black",
@@ -16,19 +16,24 @@
   "componentFramework": "glass-easel",
   "sitemapLocation": "sitemap.json",
   "lazyCodeLoading": "requiredComponents",
-
   "tabBar": {
     "custom": true,
     "list": [
       {
         "pagePath": "pages/inputitems/inputitems",
         "text": "选择家务"
-      },{
+      },
+      {
         "pagePath": "pages/mychoice/mychoice",
         "text": "我的选择"
-      },{
+      },
+      {
         "pagePath": "pages/partnerchoice/partnerchoice",
         "text": "同伴选择"
+      },
+      {
+        "pagePath": "pages/advice/advice",
+        "text": "建议"
       }
     ]
   },

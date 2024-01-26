@@ -1,0 +1,5 @@
+<!--components/tasklistitem/tasklistitem.wxml-->
+<view bindtap='handleClick' class='list-item-button'>
+  <checkbox checked='{{checked}}' bindchange='handleCheckChange'></checkbox>
+  <text>{{task.name}}</text>
+</view>

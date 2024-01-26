@@ -30,6 +30,11 @@ Component({
       "iconPath": "/public/avatar/partnerAvatar.png",
       "selectedIconPath": "/public/avatar/partnerAvatar.png",
       "text": "同伴选择"
+    },{
+      "pagePath": "/pages/advice/advice",
+      "iconPath": "/public/images/sensei.png",
+      "selectedIconPath": "/public/images/sensei.png",
+      "text": "建议"
     }]
   },
 

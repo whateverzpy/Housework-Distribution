@@ -1,7 +1,9 @@
 <scroll-view class="scrollarea" scroll-y type="list">
 	<view class="container">
 		<header></header>
-		<tab-bar></tab-bar>
-		<view>ceshi</view>
+		<view class="intro">
+			<image src="/public/images/sensei.png" mode="aspectFit"/>
+			<view class="content">请选择您的家务</view>
+		</view>
 	</view>
 </scroll-view>

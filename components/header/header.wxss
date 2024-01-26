@@ -1,4 +1,4 @@
 .logo {
-  margin-top: -180px;
-  margin-bottom: -50px;
+  margin-top: -360rpx;
+  margin-bottom: -100rpx;
 }

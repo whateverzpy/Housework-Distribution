@@ -13,18 +13,6 @@
 	align-items: center;
 }
 
-.line {
-	background: purple;
-	height: 5rpx;
-	width: 110rpx;
-	position: absolute;
-	bottom: 30rpx;
-}
-
-.line .active {
-	width: 100%;
-}
-
 .tab-bar-item {
   text-align: center;
   display: flex;
@@ -38,5 +26,5 @@
 }
 
 .tab-bar-item cover-view {
-  font-size: 10px;
+  font-size: 10rpx;
 }
