@@ -1,6 +1,5 @@
 {
   "usingComponents": {
-    "header": "/components/header/header",
-    "inputitems": "/components/inputitems/inputitems"
+    "header": "/components/header/header"
   }
 }

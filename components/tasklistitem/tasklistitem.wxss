@@ -1,4 +1,0 @@
-/* components/tasklistitem/tasklistitem.wxss */
-.list-item-button {
-  padding-left: 8rpx;
-}

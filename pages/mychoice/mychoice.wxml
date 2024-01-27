@@ -1,5 +1,5 @@
 <scroll-view class="scrollarea" scroll-y type="list">
 	<view class="container">
-		ceshi1
+		<header></header>
 	</view>
 </scroll-view>
