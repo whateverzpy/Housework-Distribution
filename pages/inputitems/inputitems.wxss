@@ -9,7 +9,7 @@ page {
   display: flex;
   height: 160rpx;
   align-items: center;
-  margin-top: -60rpx;
+  margin-top: -40rpx;
 }
 
 .intro image {
@@ -19,7 +19,6 @@ page {
 
 .intro .content {
   font-size: 60rpx;
-  font-family: "楷体";
   font-weight: bold;
   flex: 1.7;
 }
