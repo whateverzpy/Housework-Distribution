@@ -1,28 +1,16 @@
-<!--index.wxml-->
-<scroll-view class="scrollarea" scroll-y type="list">
-  <view class="container">
+<!--pages/index/index.wxml-->
+<view class="container">
   <header></header>
-  <swiper
-    indicator-dots="true"
-    indicator-active-color="purple"
-    autoplay="true"
-    interval="5000"
-    duration="500"
-    circular="true"
-    >
-    <swiper-item>
-      <image src="{{imgPath1}}" mode="aspectFit" />
-    </swiper-item>
-    <swiper-item>
-      <image src="{{imgPath2}}" mode="aspectFit"/>
-    </swiper-item>
-    <swiper-item>
-      <image src="{{imgPath3}}" mode="aspectFit"/>
-    </swiper-item>
-    <swiper-item>
-      <image src="{{imgPath4}}" mode="aspectFit"/>
-    </swiper-item>
-  </swiper>
-  <button bindtap="ToInputItems">开始使用</button>
+  <t-swiper
+  t-class="swiper"
+  current="{{current}}"
+  autoplay="{{autoplay}}"
+  duration="{{duration}}"
+  interval="{{interval}}"
+  navigation="{{ { type: 'dots-bar' } }}"
+  list="{{swiperList}}"
+  height="700rpx"/>
+  <view class="button">
+  <t-button theme="primary" size="large" block bindtap='toinputitems'>开始使用</t-button>
 </view>
-</scroll-view>
+</view>

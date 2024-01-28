@@ -1,4 +1,7 @@
 .logo {
-  margin-top: -360rpx;
-  margin-bottom: -100rpx;
+  margin-top: -150rpx;
+  margin-bottom: 150rpx;
+  height: 200rpx;
+  display: flex;
+  justify-content: center;
 }

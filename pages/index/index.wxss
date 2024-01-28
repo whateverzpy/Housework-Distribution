@@ -1,23 +1,9 @@
-/**index.wxss**/
-page {
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  /* background-color: black; */
+/* pages/index/index.wxss */
+.swiper {
+	--td-swiper-nav-dot-active-color: #0052d9;
+	--td-swiper-nav-dot-color: grey;
 }
 
-swiper {
-  width: 100%;
-  height: 700rpx;
-}
-
-swiper-item {
-  display: flex;
-  justify-content: center;
-}
-
-button {
-  margin-top: 100rpx;
-  background-color: purple;
-  color: #fff;
+.button {
+  margin: 100rpx 40rpx;
 }

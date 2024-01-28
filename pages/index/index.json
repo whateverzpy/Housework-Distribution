@@ -1,5 +1,7 @@
 {
   "usingComponents": {
-    "header": "/components/header/header"
+    "header": "/components/header/header",
+    "t-swiper": "tdesign-miniprogram/swiper/swiper",
+    "t-button": "tdesign-miniprogram/button/button"
   }
 }

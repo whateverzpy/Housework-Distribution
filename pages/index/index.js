@@ -1,13 +1,21 @@
+const swiperList = [
+  `/public/images/illust-1.png`,
+  `/public/images/illust-2.png`,
+  `/public/images/illust-3.png`,
+  `/public/images/illust-4.png`,
+];
+
 Page({
   data: {
-    imgPath1: '/public/images/illust-1.png',
-    imgPath2: '/public/images/illust-2.png',
-    imgPath3: '/public/images/illust-3.png',
-    imgPath4: '/public/images/illust-4.png',
+    current: 0,
+    autoplay: true,
+    duration: 500,
+    interval: 5000,
+    swiperList,
   },
-  ToInputItems() {
+  toinputitems: function() {
     wx.switchTab({
-      url: '/pages/inputitems/inputitems',
+      url: '/pages/inputitems/inputitems'
     })
-  },
+  }
 });
