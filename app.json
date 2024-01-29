@@ -15,39 +15,13 @@
   "componentFramework": "glass-easel",
   "sitemapLocation": "sitemap.json",
   "lazyCodeLoading": "requiredComponents",
+
   "usingComponents": {
-    "mp-form": "weui-miniprogram/form/form"
+    "header": "/components/header/header",
+    "t-steps": "tdesign-miniprogram/steps/steps",
+    "t-step-item": "tdesign-miniprogram/step-item/step-item"
   },
   "useExtendedLib": {
     "weui": true
-  },
-  "tabBar": {
-    "selectedColor": "#800080",
-    "list": [
-      {
-        "pagePath": "pages/inputitems/inputitems",
-        "text": "家务",
-        "iconPath": "public/images/sensei.png",
-        "selectedIconPath": "public/images/sensei.png"
-      },
-      {
-        "pagePath": "pages/mychoice/mychoice",
-        "text": "我的",
-        "iconPath": "public/avatar/myAvatar.png",
-        "selectedIconPath": "public/avatar/myAvatar.png"
-      },
-      {
-        "pagePath": "pages/partnerchoice/partnerchoice",
-        "text": "同伴",
-        "iconPath": "public/avatar/partnerAvatar.png",
-        "selectedIconPath": "public/avatar/partnerAvatar.png"
-      },
-      {
-        "pagePath": "pages/advice/advice",
-        "text": "建议",
-        "iconPath": "public/images/sensei.png",
-        "selectedIconPath": "public/images/sensei.png"
-      }
-    ]
   }
 }

@@ -14,7 +14,7 @@ Page({
     swiperList,
   },
   toinputitems: function() {
-    wx.switchTab({
+    wx.navigateTo({
       url: '/pages/inputitems/inputitems'
     })
   }

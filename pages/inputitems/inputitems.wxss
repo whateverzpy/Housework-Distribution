@@ -22,3 +22,8 @@ page {
   font-weight: bold;
   flex: 1.7;
 }
+
+.steps {
+  padding: 32rpx 0;
+  margin: -60rpx 0 30rpx 0;
+}
