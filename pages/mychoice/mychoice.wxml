@@ -1,5 +1,13 @@
 <scroll-view class="scrollarea" scroll-y type="list">
 	<view class="container">
 		<header></header>
+		<view class="steps">
+		<t-steps current="{{first}}">
+    <t-step-item title="选择家务" bind:tap="toinputitems"/>
+		<t-step-item title="我的选择" />
+		<t-step-item title="同伴选择" bind:tap="topartnerchoice"/>
+		<t-step-item title="建议" bind:tap="toadvice"/>
+		</t-steps>
+		</view>
 	</view>
 </scroll-view>

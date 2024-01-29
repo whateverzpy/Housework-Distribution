@@ -11,6 +11,6 @@
   list="{{swiperList}}"
   height="700rpx"/>
   <view class="button">
-  <t-button theme="primary" size="large" block bindtap='toinputitems'>开始使用</t-button>
+  <t-button theme="primary" size="large" block bind:tap='toinputitems'>开始使用</t-button>
 </view>
 </view>
