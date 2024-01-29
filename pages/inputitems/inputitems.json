@@ -1,4 +1,5 @@
 {
   "usingComponents": {
+    "t-tree-select": "tdesign-miniprogram/tree-select/tree-select"
   }
 }
