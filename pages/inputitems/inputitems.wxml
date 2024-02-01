@@ -13,6 +13,22 @@
 			<image src="/public/images/sensei.png" mode="aspectFit"/>
 			<view class="content">请选择您的家务</view>
 		</view>
-		<t-tree-select options="{{options}}" value="{{value}}" multiple bind:change="onChange" />
+		<!-- <t-tree-select height="100%" options="{{options}}" value="{{value}}" multiple="true" bind:change="onChange" /> -->
+		<t-collapse expand-mutex="true" >
+			<t-collapse-panel header="标题1" value="{{0}}">
+				<t-checkbox-group
+				options="{{options}}"
+				defaultValue="{{checkAllValues}}"
+				bind:change="onCheckAllChange">
+				</t-checkbox-group>
+			</t-collapse-panel>
+			<t-collapse-panel header="标题2" value="{{1}}">
+			此处可自定义内容此处可自定义内容此处可自定义内容此处可自定义内容此处可自定义内容此处可自定义内容此处可自定义内容此处可自定义内容
+			</t-collapse-panel>
+			<t-collapse-panel header="标题3" value="{{2}}">
+			此处可自定义内容此处可自定义内容此处可自定义内容此处可自定义内容此处可自定义内容此处可自定义内容此处可自定义内容此处可自定义内容
+			</t-collapse-panel>
+		</t-collapse>
+
 	</view>
 </scroll-view>

@@ -8,7 +8,7 @@ Component({
 	},
 	methods: {
 		toinputitems(e) {
-			wx.navigateTo({
+			wx.redirectTo({
 				url: '/pages/inputitems/inputitems',
 			})
 		},

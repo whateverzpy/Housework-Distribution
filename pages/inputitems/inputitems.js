@@ -1,44 +1,28 @@
-const chineseNumber = '一二三四五六七八九十'.split('');
-
-const generateTree = function (deep = 0, count = 10, prefix) {
-  const ans = [];
-
-  for (let i = 0; i < count; i += 1) {
-    const value = prefix ? `${prefix}-${i}` : `${i}`;
-    const rect = {
-      label: `选项${chineseNumber[i]}`,
-      value,
-    };
-
-    if (deep > 0) {
-      rect.children = generateTree(deep - 1, 10, value);
-    }
-    ans.push(rect);
-  }
-
-  return ans;
-};
 
 Page({
 	options: {
 		styleIsolation: 'apply-shared',
-	},
-	data: {
-		first: 0,
-		options: generateTree(1),
-		value: ['0', ['0-0', '0-1']],
 	},
 });
 
 Component({
 	data: {
 		first: 0,
-		options: generateTree(1),
-		value: ['0', ['0-0', '0-1']],
+		options: [
+      { label: '全选', checkAll: true },
+      { label: '多选', value: 1 },
+      { label: '多选', value: 2 },
+      {
+        label: '多选',
+        value: 3,
+        content: '单选描述信息单选描述信息单选描述信息单选描述信息单选描述信息单选描述信息单选描述信息',
+      },
+    ],
+    checkAllValues: [1, 2, 3, ''],
 	},
 	methods: {
 		toinputitems(e) {
-			wx.navigateTo({
+			wx.redirectTo({
 				url: '/pages/inputitems/inputitems',
 			})
 		},
@@ -60,6 +44,12 @@ Component({
 		onChange(e) {
       this.setData({
         value: e.detail.value,
+      });
+		},
+		onCheckAllChange(event) {
+      console.log('checkbox', event.detail.value);
+      this.setData({
+        checkAllValues: event.detail,
       });
     },
 	}
