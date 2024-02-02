@@ -19,7 +19,9 @@
   "usingComponents": {
     "header": "/components/header/header",
     "t-steps": "tdesign-miniprogram/steps/steps",
-    "t-step-item": "tdesign-miniprogram/step-item/step-item"
+    "t-step-item": "tdesign-miniprogram/step-item/step-item",
+    "t-button": "tdesign-miniprogram/button/button",
+    "t-icon": "tdesign-miniprogram/icon/icon"
   },
   "useExtendedLib": {
     "weui": true

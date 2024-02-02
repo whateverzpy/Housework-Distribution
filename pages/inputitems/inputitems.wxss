@@ -23,3 +23,9 @@ page {
   flex: 1.7;
 }
 
+.button {
+  margin: 0 32rpx 40rpx 32rpx;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32rpx;
+}

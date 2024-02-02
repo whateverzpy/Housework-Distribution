@@ -13,22 +13,27 @@
 			<image src="/public/images/sensei.png" mode="aspectFit"/>
 			<view class="content">请选择您的家务</view>
 		</view>
-		<!-- <t-tree-select height="100%" options="{{options}}" value="{{value}}" multiple="true" bind:change="onChange" /> -->
-		<t-collapse expand-mutex="true" >
+		<form bindsubmit="formSubmit" bindreset="formReset" class="inputitems">
+			<t-collapse>
 			<t-collapse-panel header="标题1" value="{{0}}">
-				<t-checkbox-group
-				options="{{options}}"
-				defaultValue="{{checkAllValues}}"
+				<t-checkbox-group name="checkbox"
+				options="{{options1}}"
 				bind:change="onCheckAllChange">
 				</t-checkbox-group>
 			</t-collapse-panel>
 			<t-collapse-panel header="标题2" value="{{1}}">
-			此处可自定义内容此处可自定义内容此处可自定义内容此处可自定义内容此处可自定义内容此处可自定义内容此处可自定义内容此处可自定义内容
-			</t-collapse-panel>
-			<t-collapse-panel header="标题3" value="{{2}}">
-			此处可自定义内容此处可自定义内容此处可自定义内容此处可自定义内容此处可自定义内容此处可自定义内容此处可自定义内容此处可自定义内容
+				<t-checkbox-group name="checkbox"
+				options="{{options2}}"
+				bind:change="onCheckAllChange">
+				</t-checkbox-group>
 			</t-collapse-panel>
 		</t-collapse>
-
+		<view class="button">
+			<t-button theme="light" block size="large" icon="refresh" type="reset">重置</t-button>
+			<t-button theme="primary" block size="large" type="submit">
+			下一步<t-icon name="chevron-right" slot="suffix" size="48rpx"></t-icon>
+			</t-button>
+		</view>
+		</form>
 	</view>
 </scroll-view>
