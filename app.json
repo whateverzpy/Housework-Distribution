@@ -15,7 +15,6 @@
   "componentFramework": "glass-easel",
   "sitemapLocation": "sitemap.json",
   "lazyCodeLoading": "requiredComponents",
-
   "usingComponents": {
     "header": "/components/header/header",
     "t-steps": "tdesign-miniprogram/steps/steps",

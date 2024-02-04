@@ -3,11 +3,14 @@
 		<header></header>
 		<view class="steps">
 		<t-steps current="{{first}}">
-    <t-step-item title="选择家务" bind:tap="toinputitems"/>
+    <t-step-item title="选择家务" bindtap="toinputitems"/>
 		<t-step-item title="我的选择" />
-		<t-step-item title="同伴选择" bind:tap="topartnerchoice"/>
-		<t-step-item title="建议" bind:tap="toadvice"/>
+		<t-step-item title="同伴选择" bindtap="topartnerchoice"/>
+		<t-step-item title="建议" bindtap="toadvice"/>
 		</t-steps>
+		</view>
+		<view wx:for="{{selected}}" wx:key="this">
+			<view>{{item}}</view>
 		</view>
 	</view>
 </scroll-view>
