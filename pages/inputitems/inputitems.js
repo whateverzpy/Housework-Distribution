@@ -52,10 +52,7 @@ Page({
 	},
 	onCheckAllChange: function(e) {
 		console.log('checkbox', e.detail.value)
-      this.setData({
-        checkAllValues: e.detail.value
-			})
-			app.globalData.selected = e.detail.value
+		app.globalData.selected = e.detail.value
 	},
 	resetCheckbox: function() {
 		app.globalData.selected = []
