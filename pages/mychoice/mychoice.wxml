@@ -12,5 +12,6 @@
 		<view wx:for="{{selected}}" wx:key="this">
 			<view>{{item}}</view>
 		</view>
+		<burden></burden>
 	</view>
 </scroll-view>

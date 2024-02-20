@@ -1,0 +1,6 @@
+<!--components/burden/burden.wxml-->
+<view class="burden">
+	<view class="text">demo</view>
+	<t-rate count="{{3}}" value="{{2}}" bind:change="onChange" showText="{{true}}" texts="{{texts}}"/>
+	<t-slider class="slider" value="{{value}}" label="${value}" bind:change="handleChange"></t-slider>
+</view>
