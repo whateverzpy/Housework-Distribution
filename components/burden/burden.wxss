@@ -1,1 +1,15 @@
 /* components/burden/burden.wxss */
+.burden {
+	display: flex;
+	height: 90rpx;
+	align-items: center;
+}
+
+.text {
+	width: 150rpx;
+	text-align: center;
+}
+
+.slider {
+	width: 300rpx;
+}

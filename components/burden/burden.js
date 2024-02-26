@@ -5,14 +5,17 @@ Component({
    * 组件的属性列表
    */
   properties: {
-
+    content: {
+      type: String,
+    }
   },
 
   /**
    * 组件的初始数据
    */
   data: {
-    value: 50,
+    ratevalue: 2,
+    slidervalue: 50,
     texts: ["讨厌","一般","喜欢"]
   },
 
@@ -22,7 +25,14 @@ Component({
   methods: {
     handleChange(e) {
       this.setData({
-        value: e.detail.value,
+        slidervalue: e.detail.value,
+      });
+    },
+    onChange(e) {
+      const { index } = e.currentTarget.dataset;
+      const { value } = e.detail;
+      this.setData({
+        ratevalue: value,
       });
     },
   }

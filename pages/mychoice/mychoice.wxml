@@ -10,8 +10,7 @@
 		</t-steps>
 		</view>
 		<view wx:for="{{selected}}" wx:key="this">
-			<view>{{item}}</view>
+			<burden content="{{item}}"></burden>
 		</view>
-		<burden></burden>
 	</view>
 </scroll-view>
