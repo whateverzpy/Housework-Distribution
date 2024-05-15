@@ -16,5 +16,7 @@ App({
   globalData: {
     userInfo: null,
     selected: [],
+    preferences: [[],[]],
+    times: [[],[]],
   },
 })

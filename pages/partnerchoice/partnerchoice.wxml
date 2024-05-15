@@ -9,5 +9,13 @@
 		<t-step-item title="建议" bind:tap="toadvice"/>
 		</t-steps>
 		</view>
+		<view class="title">
+			<view class="name">家务</view>
+			<view class="degree">喜好程度</view>
+			<view class="time">时间</view>
+		</view>
+		<view wx:for="{{selected}}" wx:key="this" wx:for-index="index">
+			<burden flag="1" content="{{item}}" index="{{index}}"></burden>
+		</view>
 	</view>
 </scroll-view>

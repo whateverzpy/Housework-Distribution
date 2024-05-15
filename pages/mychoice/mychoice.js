@@ -3,6 +3,7 @@ const app = getApp()
 Page({
 	data: {
 		first: 1,
+		ID: 0,
 		selected: app.globalData.selected,
 	},
 	onShow: function() {

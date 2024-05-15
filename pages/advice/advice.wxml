@@ -9,5 +9,6 @@
 		<t-step-item title="建议" />
 		</t-steps>
 		</view>
+		<view>{{result}}</view>
 	</view>
 </scroll-view>

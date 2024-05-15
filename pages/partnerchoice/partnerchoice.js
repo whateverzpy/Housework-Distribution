@@ -1,31 +1,35 @@
-Page({
-	
-});
+const app = getApp()
 
-Component({
+Page({
 	data: {
-		first: 2
+		first: 2,
+		ID: 1,
+		selected: app.globalData.selected,
 	},
-	methods: {
-		toinputitems(e) {
-			wx.redirectTo({
-				url: '/pages/inputitems/inputitems',
-			})
-		},
-		tomychoice(e) {
-			wx.redirectTo({
-				url: '/pages/mychoice/mychoice',
-			})
-		},
-		topartnerchoice(e) {
-			wx.redirectTo({
-				url: '/pages/partnerchoice/partnerchoice',
-			})
-		},
-		toadvice(e) {
-			wx.redirectTo({
-				url: '/pages/advice/advice',
-			})
-		}
-	}
+	onShow: function() {
+		this.setData({
+			selected: app.globalData.selected
+		})
+	},
+	toinputitems: function() {
+		wx.redirectTo({
+			url: '/pages/inputitems/inputitems',
+		})
+		console.log(app.globalData.selected)
+	},
+	tomychoice: function() {
+		wx.redirectTo({
+			url: '/pages/mychoice/mychoice',
+		})
+	},
+	topartnerchoice: function() {
+		wx.redirectTo({
+			url: '/pages/partnerchoice/partnerchoice',
+		})
+	},
+	toadvice: function() {
+		wx.redirectTo({
+			url: '/pages/advice/advice',
+		})
+	},
 })

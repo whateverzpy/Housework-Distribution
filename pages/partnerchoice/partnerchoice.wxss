@@ -1,0 +1,19 @@
+.title {
+	display: flex;
+	align-items: center;
+	text-align: center;
+	font-size: large;
+	font-weight: bold;
+}
+
+.name {
+	width: 150rpx;
+}
+
+.degree {
+	width: 300rpx;
+}
+
+.time {
+	width: 250rpx;
+}
