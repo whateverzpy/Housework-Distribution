@@ -1,8 +1,8 @@
 const swiperList = [
-  `/public/images/illust-1.png`,
-  `/public/images/illust-2.png`,
-  `/public/images/illust-3.png`,
-  `/public/images/illust-4.png`,
+  `/public/images/swaper1.jpg`,
+  `/public/images/swaper2.jpg`,
+  `/public/images/swaper3.jpg`,
+  `/public/images/swaper4.jpg`,
 ];
 
 Page({

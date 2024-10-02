@@ -9,7 +9,7 @@
   interval="{{interval}}"
   navigation="{{ { type: 'dots-bar' } }}"
   list="{{swiperList}}"
-  height="700rpx"/>
+  height="800rpx"/>
   <view class="button">
   <t-button theme="primary" size="large" block bind:tap='toinputitems'>开始使用</t-button>
 </view>

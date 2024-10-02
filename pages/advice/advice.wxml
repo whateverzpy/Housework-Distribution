@@ -9,6 +9,9 @@
 		<t-step-item title="建议" />
 		</t-steps>
 		</view>
-		<view>{{result}}</view>
+		<view style="white-space: pre-line;">
+		我的分配：{{result[0]}}
+		同伴分配：{{result[1]}}
+		</view>
 	</view>
 </scroll-view>
