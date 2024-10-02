@@ -38,7 +38,6 @@ Page({
 		wx.redirectTo({
 			url: '/pages/mychoice/mychoice',
 		})
-		console.log(app.globalData.selected)
 	},
 	topartnerchoice: function() {
 		wx.redirectTo({
@@ -51,7 +50,6 @@ Page({
 		})
 	},
 	onCheckAllChange: function(e) {
-		console.log('checkbox', e.detail.value)
 		app.globalData.selected = e.detail.value
 	},
 	resetCheckbox: function() {

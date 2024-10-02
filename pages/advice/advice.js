@@ -7,11 +7,6 @@ const times = app.globalData.times;
 const aliceUtility = [];
 const bobUtility = [];
 
-for (let i = 0; i < chores.length; i++) {
-  aliceUtility.push((3 - preferences[0][i]) * times[0][i]);
-  bobUtility.push((3 - preferences[1][i]) * times[1][i]);
-}
-
 function DeleteFromArray(Array1, item) {
   const Array2 = [];
   for (let i = 0; i < Array1.length; i++) {
@@ -59,6 +54,22 @@ function isEFone(AliceUtility, BobUtility, AliceAllocation, BobAllocation) {
   );
 }
 
+function isEF(AliceUtility,BobUtility,AliceAllocation,BobAllocation){
+  const AAU=[];
+  const BAU=[];
+  const ABU=[];
+  const BBU=[];
+  for (let i=0; i < AliceAllocation.length; i++){
+    AAU.push(AliceUtility[AliceAllocation[i]]);
+    BAU.push(BobUtility[AliceAllocation[i]]);
+  }
+  for (let i=0; i < BobAllocation.length; i++){
+    ABU.push(AliceUtility[BobAllocation[i]]);
+    BBU.push(BobUtility[BobAllocation[i]]);
+  }
+  return (SumArray(AAU) <= SumArray(ABU) && SumArray(BBU) <= SumArray(BAU));
+}
+
 function initAllocate(selectedChores) {
   const AliceAllocation = [];
   const BobAllocation = [];
@@ -90,7 +101,7 @@ function improvedAdjustedWinner(aliceUtility, bobUtility, taskList) {
     let t = 0;
     for (let i = 0; i < alist.length; i++) {
       if (
-        isEFone(aliceUtility, bobUtility, AliceAllocation, BobAllocation) ==
+        isEF(aliceUtility, bobUtility, AliceAllocation, BobAllocation) ==
         true
       ) {
         break;
@@ -135,7 +146,7 @@ function improvedAdjustedWinner(aliceUtility, bobUtility, taskList) {
     let t = 0;
     for (let i = 0; i < blist.length; i++) {
       if (
-        isEFone(aliceUtility, bobUtility, AliceAllocation, BobAllocation) ==
+        isEF(aliceUtility, bobUtility, AliceAllocation, BobAllocation) ==
         true
       ) {
         break;
@@ -182,6 +193,8 @@ function improvedAdjustedWinner(aliceUtility, bobUtility, taskList) {
 let result = [];
 result = improvedAdjustedWinner(aliceUtility, bobUtility, chores);
 
+console.log(aliceUtility, bobUtility);
+
 Page({
   data: {
     first: 3,
@@ -193,8 +206,18 @@ Page({
     result: result,
   },
   onShow: function () {
+    for (let i = 0; i < chores.length; i++) {
+      aliceUtility.push((3 - preferences[0][i]) * times[0][i]);
+      bobUtility.push((3 - preferences[1][i]) * times[1][i]);
+    }
+    result = improvedAdjustedWinner(aliceUtility, bobUtility, chores);
     this.setData({
       selected: app.globalData.selected,
+      preferences: app.globalData.preferences,
+      times: app.globalData.times,
+      aliceUtility: aliceUtility,
+      bobUtility: bobUtility,
+      result: result,
     });
   },
   toinputitems: function () {

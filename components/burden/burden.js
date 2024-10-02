@@ -25,7 +25,15 @@ Component({
     slidervalue: 50,
     texts: ["讨厌", "一般", "喜欢"],
   },
-
+  lifetimes: {
+    attached() {
+      app.globalData.times[this.properties.flag][
+        this.properties.index
+      ] = this.data.slidervalue;
+      app.globalData.preferences[this.properties.flag][this.properties.index] =
+        this.data.ratevalue - 1;
+    },
+  },
   /**
    * 组件的方法列表
    */
@@ -36,7 +44,6 @@ Component({
       });
       app.globalData.times[this.properties.flag][this.properties.index] =
         e.detail.value;
-      console.log(app.globalData.times);
     },
     onChange(e) {
       this.setData({
@@ -44,7 +51,6 @@ Component({
       });
       app.globalData.preferences[this.properties.flag][this.properties.index] =
         e.detail.value - 1;
-      console.log(app.globalData.preferences);
     },
   },
 });
