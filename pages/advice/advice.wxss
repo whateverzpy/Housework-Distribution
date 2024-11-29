@@ -1,1 +1,9 @@
 /* pages/advice/advice.wxss */
+.box {
+	width: 100%;
+	height: 600rpx;
+	position: absolute;
+	margin-top: 30;
+	font-size: 42rpx;
+	font-weight: bold;
+}

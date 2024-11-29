@@ -7,238 +7,300 @@ const times = app.globalData.times;
 const aliceUtility = [];
 const bobUtility = [];
 
-function DeleteFromArray(Array1, item) {
-  const Array2 = [];
-  for (let i = 0; i < Array1.length; i++) {
-    if (Array1[i] !== item) {
-      Array2.push(Array1[i]);
-      //console.log(Array1[i]);
-    }
-  }
-  return Array2;
+function deleteFromArray(array, item) {
+	return array.filter((element) => element !== item);
 }
 
-function AddIntoArray(Array1, item) {
-  const Array2 = [];
-  for (let i = 0; i < Array1.length; i++) {
-    Array2.push(Array1[i]);
-  }
-  Array2.push(item);
-  return Array2;
+function addIntoArray(array, item) {
+	return [...array, item];
 }
 
-function SumArray(Array1) {
-  return Array1.reduce((prev, cur) => cur + prev, 0);
+function sumArray(array) {
+	return array.reduce((prev, cur) => cur + prev, 0);
 }
 
-function MaxArray(Array1) {
-  return Array1.reduce((prev, cur) => Math.max(prev, cur), 0);
+function maxArray(array) {
+	return array.reduce((prev, cur) => Math.max(prev, cur), 0);
 }
 
-function isEFone(AliceUtility, BobUtility, AliceAllocation, BobAllocation) {
-  const AAU = [];
-  const BAU = [];
-  const ABU = [];
-  const BBU = [];
-  for (let i = 0; i < AliceAllocation.length; i++) {
-    AAU.push(AliceUtility[AliceAllocation[i]]);
-    BAU.push(BobUtility[AliceAllocation[i]]);
-  }
-  for (let i = 0; i < BobAllocation.length; i++) {
-    ABU.push(AliceUtility[BobAllocation[i]]);
-    BBU.push(BobUtility[BobAllocation[i]]);
-  }
-  return (
-    SumArray(AAU) - MaxArray(AAU) <= SumArray(ABU) &&
-    SumArray(BBU) - MaxArray(BBU) <= SumArray(BAU)
-  );
+function isEFone(aliceUtility, bobUtility, aliceAllocation, bobAllocation) {
+	const AAU = aliceAllocation.map((index) => aliceUtility[index]);
+	const BAU = aliceAllocation.map((index) => bobUtility[index]);
+	const ABU = bobAllocation.map((index) => aliceUtility[index]);
+	const BBU = bobAllocation.map((index) => bobUtility[index]);
+
+	return (
+		sumArray(AAU) - maxArray(AAU) <= sumArray(ABU) &&
+		sumArray(BBU) - maxArray(BBU) <= sumArray(BAU)
+	);
 }
 
-function isEF(AliceUtility,BobUtility,AliceAllocation,BobAllocation){
-  const AAU=[];
-  const BAU=[];
-  const ABU=[];
-  const BBU=[];
-  for (let i=0; i < AliceAllocation.length; i++){
-    AAU.push(AliceUtility[AliceAllocation[i]]);
-    BAU.push(BobUtility[AliceAllocation[i]]);
-  }
-  for (let i=0; i < BobAllocation.length; i++){
-    ABU.push(AliceUtility[BobAllocation[i]]);
-    BBU.push(BobUtility[BobAllocation[i]]);
-  }
-  return (SumArray(AAU) <= SumArray(ABU) && SumArray(BBU) <= SumArray(BAU));
+function isEF(aliceUtility, bobUtility, aliceAllocation, bobAllocation) {
+	const AAU = aliceAllocation.map((index) => aliceUtility[index]);
+	const BAU = aliceAllocation.map((index) => bobUtility[index]);
+	const ABU = bobAllocation.map((index) => aliceUtility[index]);
+	const BBU = bobAllocation.map((index) => bobUtility[index]);
+
+	return sumArray(AAU) <= sumArray(ABU) && sumArray(BBU) <= sumArray(BAU);
 }
 
 function initAllocate(selectedChores) {
-  const AliceAllocation = [];
-  const BobAllocation = [];
-  for (let chore of selectedChores) {
-    if (Math.random() < 0.5) {
-      AliceAllocation.push(chore);
-    } else {
-      BobAllocation.push(chore);
-    }
-  }
-  return AliceAllocation, BobAllocation;
+	const aliceAllocation = [];
+	const bobAllocation = [];
+	selectedChores.forEach((chore) => {
+		if (Math.random() < 0.5) {
+			aliceAllocation.push(chore);
+		} else {
+			bobAllocation.push(chore);
+		}
+	});
+	return [aliceAllocation, bobAllocation];
+}
+
+function adjustedWinner(aliceUtility, bobUtility, taskList) {
+	let aliceAllocation = Array.from(Array(aliceUtility.length), (v, k) => k);
+	let bobAllocation = [];
+	let alist = aliceAllocation.map((index) => [
+		index,
+		bobUtility[index] / aliceUtility[index],
+	]);
+
+	alist.sort((a, b) => a[1] - b[1]);
+
+	let t = 0;
+	while (
+		t < alist.length &&
+		!isEFone(aliceUtility, bobUtility, aliceAllocation, bobAllocation)
+	) {
+		aliceAllocation = deleteFromArray(aliceAllocation, alist[t][0]);
+		bobAllocation.push(alist[t][0]);
+		t++;
+	}
+
+	const aliceTask = aliceAllocation.map((index) => taskList[index]);
+	const bobTask = bobAllocation.map((index) => taskList[index]);
+
+	console.log(aliceTask, bobTask);
+	return [aliceTask, bobTask];
 }
 
 function improvedAdjustedWinner(aliceUtility, bobUtility, taskList) {
-  let ranNum = Math.random();
-  let AliceAllocation = [];
-  let BobAllocation = [];
-  if (ranNum >= 0.5) {
-    AliceAllocation = Array.from(Array(aliceUtility.length), (v, k) => k);
-    BobAllocation = [];
-    let alist = [];
-    for (let i = 0; i < AliceAllocation.length; i++) {
-      alist.push([
-        AliceAllocation[i],
-        bobUtility[AliceAllocation[i]] / aliceUtility[AliceAllocation[i]],
-      ]);
-    }
-    alist.sort((a, b) => a[1] - b[1]);
-    let t = 0;
-    for (let i = 0; i < alist.length; i++) {
-      if (
-        isEF(aliceUtility, bobUtility, AliceAllocation, BobAllocation) ==
-        true
-      ) {
-        break;
-      }
-      if (t < alist.length) {
-        AliceAllocation = DeleteFromArray(AliceAllocation, alist[t][0]);
-        BobAllocation.push(alist[t][0]);
-        t++;
-      }
-    }
-    for (let i = t; i < alist.length; i++) {
-      const BAU = [];
-      const BBU = [];
-      let aAllocation = DeleteFromArray(AliceAllocation, alist[t][0]);
-      let bAllocation = AddIntoArray(BobAllocation, alist[t][0]);
-      for (let i = 0; i < aAllocation.length; i++) {
-        BAU.push(bobUtility[aAllocation[i]]);
-      }
-      for (let i = 0; i < bAllocation.length; i++) {
-        BBU.push(bobUtility[bAllocation[i]]);
-      }
-      if (SumArray(BBU) > SumArray(BAU)) {
-        break;
-      }
-      if (t < alist.length) {
-        AliceAllocation = DeleteFromArray(AliceAllocation, alist[t][0]);
-        BobAllocation.push(alist[t][0]);
-        t++;
-      }
-    }
-  } else {
-    AliceAllocation = [];
-    BobAllocation = Array.from(Array(bobUtility.length), (v, k) => k);
-    let blist = [];
-    for (let i = 0; i < BobAllocation.length; i++) {
-      blist.push([
-        BobAllocation[i],
-        aliceUtility[BobAllocation[i]] / bobUtility[BobAllocation[i]],
-      ]);
-    }
-    blist.sort((a, b) => a[1] - b[1]);
-    let t = 0;
-    for (let i = 0; i < blist.length; i++) {
-      if (
-        isEF(aliceUtility, bobUtility, AliceAllocation, BobAllocation) ==
-        true
-      ) {
-        break;
-      }
-      if (t < blist.length) {
-        BobAllocation = DeleteFromArray(BobAllocation, blist[t][0]);
-        AliceAllocation.push(blist[t][0]);
-        t++;
-      }
-    }
-    for (let i = t; i < blist.length; i++) {
-      const ABU = [];
-      const AAU = [];
-      let aAllocation = AddIntoArray(AliceAllocation, blist[t][0]);
-      let bAllocation = DeleteFromArray(BobAllocation, blist[t][0]);
-      for (let i = 0; i < bAllocation.length; i++) {
-        ABU.push(aliceUtility[bAllocation[i]]);
-      }
-      for (let i = 0; i < aAllocation.length; i++) {
-        AAU.push(aliceUtility[aAllocation[i]]);
-      }
-      if (SumArray(AAU) > SumArray(ABU)) {
-        break;
-      }
-      if (t < blist.length) {
-        BobAllocation = DeleteFromArray(BobAllocation, blist[t][0]);
-        AliceAllocation.push(blist[t][0]);
-        t++;
-      }
-    }
-  }
-  const aliceTask = [];
-  for (let i of AliceAllocation) {
-    aliceTask.push(taskList[i]);
-  }
-  const bobTask = [];
-  for (let i of BobAllocation) {
-    bobTask.push(taskList[i]);
-  }
-  console.log(aliceTask, bobTask);
-  return [aliceTask, bobTask];
+	const ranNum = Math.random();
+	let aliceAllocation = [];
+	let bobAllocation = [];
+
+	if (ranNum >= 0.5) {
+		aliceAllocation = Array.from(Array(aliceUtility.length), (v, k) => k);
+		let alist = aliceAllocation.map((index) => [
+			index,
+			bobUtility[index] / aliceUtility[index],
+		]);
+
+		alist.sort((a, b) => a[1] - b[1]);
+
+		let t = 0;
+		while (
+			t < alist.length &&
+			!isEF(aliceUtility, bobUtility, aliceAllocation, bobAllocation)
+		) {
+			aliceAllocation = deleteFromArray(aliceAllocation, alist[t][0]);
+			bobAllocation.push(alist[t][0]);
+			t++;
+		}
+
+		for (let i = t; i < alist.length; i++) {
+			const BAU = bobAllocation.map((index) => bobUtility[index]);
+			const BBU = addIntoArray(bobAllocation, alist[t][0]).map(
+				(index) => bobUtility[index]
+			);
+
+			if (sumArray(BBU) > sumArray(BAU)) break;
+
+			aliceAllocation = deleteFromArray(aliceAllocation, alist[t][0]);
+			bobAllocation.push(alist[t][0]);
+			t++;
+		}
+	} else {
+		bobAllocation = Array.from(Array(bobUtility.length), (v, k) => k);
+		let blist = bobAllocation.map((index) => [
+			index,
+			aliceUtility[index] / bobUtility[index],
+		]);
+
+		blist.sort((a, b) => a[1] - b[1]);
+
+		let t = 0;
+		while (
+			t < blist.length &&
+			!isEF(aliceUtility, bobUtility, aliceAllocation, bobAllocation)
+		) {
+			bobAllocation = deleteFromArray(bobAllocation, blist[t][0]);
+			aliceAllocation.push(blist[t][0]);
+			t++;
+		}
+
+		for (let i = t; i < blist.length; i++) {
+			const ABU = aliceAllocation.map((index) => aliceUtility[index]);
+			const AAU = addIntoArray(aliceAllocation, blist[t][0]).map(
+				(index) => aliceUtility[index]
+			);
+
+			if (sumArray(AAU) > sumArray(ABU)) break;
+
+			bobAllocation = deleteFromArray(bobAllocation, blist[t][0]);
+			aliceAllocation.push(blist[t][0]);
+			t++;
+		}
+	}
+
+	const aliceTask = aliceAllocation.map((index) => taskList[index]);
+	const bobTask = bobAllocation.map((index) => taskList[index]);
+
+	console.log(aliceTask, bobTask);
+	return [aliceTask, bobTask];
 }
 
-let result = [];
-result = improvedAdjustedWinner(aliceUtility, bobUtility, chores);
+let result = adjustedWinner(aliceUtility, bobUtility, chores);
 
-console.log(aliceUtility, bobUtility);
+// console.log(aliceUtility, bobUtility);
+
+function calculateBurden(tasks, preferences, times, personIndex) {
+	const burdens = {};
+	tasks.forEach((task) => {
+		const taskIndex = chores.indexOf(task);
+		if (taskIndex !== -1) {
+			burdens[task] =
+				(3 - preferences[personIndex][taskIndex]) *
+				times[personIndex][taskIndex];
+		}
+	});
+	return burdens;
+}
+
+import * as echarts from "../../components/ec-canvas/echarts.js";
+var chart = null;
+
+function convertBurdensToChartData(burdens) {
+	return Object.entries(burdens).map(([choreName, burden]) => ({
+		value: burden,
+		name: choreName,
+	}));
+}
 
 Page({
-  data: {
-    first: 3,
-    selected: app.globalData.selected,
-    preferences: app.globalData.preferences,
-    times: app.globalData.times,
-    aliceUtility: aliceUtility,
-    bobUtility: bobUtility,
-    result: result,
-  },
-  onShow: function () {
-    for (let i = 0; i < chores.length; i++) {
-      aliceUtility.push((3 - preferences[0][i]) * times[0][i]);
-      bobUtility.push((3 - preferences[1][i]) * times[1][i]);
-    }
-    result = improvedAdjustedWinner(aliceUtility, bobUtility, chores);
-    this.setData({
-      selected: app.globalData.selected,
-      preferences: app.globalData.preferences,
-      times: app.globalData.times,
-      aliceUtility: aliceUtility,
-      bobUtility: bobUtility,
-      result: result,
-    });
-  },
-  toinputitems: function () {
-    wx.redirectTo({
-      url: "/pages/inputitems/inputitems",
-    });
-    console.log(app.globalData.selected);
-  },
-  tomychoice: function () {
-    wx.redirectTo({
-      url: "/pages/mychoice/mychoice",
-    });
-  },
-  topartnerchoice: function () {
-    wx.redirectTo({
-      url: "/pages/partnerchoice/partnerchoice",
-    });
-  },
-  toadvice: function () {
-    wx.redirectTo({
-      url: "/pages/advice/advice",
-    });
-  },
+	data: {
+		first: 3,
+		selected: app.globalData.selected,
+		preferences: app.globalData.preferences,
+		times: app.globalData.times,
+		aliceUtility: aliceUtility,
+		bobUtility: bobUtility,
+		result: result,
+		aliceBurdens: {},
+		bobBurdens: {},
+		aliceChartData: [],
+		bobChartData: [],
+		ec1: {
+			lazyLoad: true,
+		},
+	},
+	onReady: function () {
+		// 页面渲染完成后初始化图表
+		this.ecComponent = this.selectComponent("#mychart-dom-pie");
+		this.initChart();
+	},
+	initChart: function () {
+		this.ecComponent.init((canvas, width, height) => {
+			chart = echarts.init(canvas, null, {
+				width: width,
+				height: height,
+			});
+			canvas.setChart(chart);
+
+			// 立即设置图表数据
+			const option = {
+				title: {
+					left: "center",
+				},
+				tooltip: {
+					trigger: "item",
+				},
+				series: [
+					{
+						type: "pie",
+						radius: "65%",
+						center: ["50%", "50%"],
+						selectedMode: "single",
+						data: this.data.aliceChartData,
+						emphasis: {
+							itemStyle: {
+								shadowBlur: 10,
+								shadowOffsetX: 0,
+								shadowColor: "rgba(0, 0, 0, 0.5)",
+							},
+						},
+					},
+				],
+			};
+
+			chart.setOption(option);
+			return chart;
+		});
+	},
+	onShow: function () {
+		for (let i = 0; i < chores.length; i++) {
+			aliceUtility.push((3 - preferences[0][i]) * times[0][i]);
+			bobUtility.push((3 - preferences[1][i]) * times[1][i]);
+		}
+
+		result = adjustedWinner(aliceUtility, bobUtility, chores);
+
+		const aliceBurdens = calculateBurden(result[0], preferences, times, 0);
+		const bobBurdens = calculateBurden(result[1], preferences, times, 1);
+
+		const aliceChartData = convertBurdensToChartData(aliceBurdens);
+		const bobChartData = convertBurdensToChartData(bobBurdens);
+
+		this.setData(
+			{
+				selected: app.globalData.selected,
+				preferences: app.globalData.preferences,
+				times: app.globalData.times,
+				aliceUtility: aliceUtility,
+				bobUtility: bobUtility,
+				result: result,
+				aliceBurdens: aliceBurdens,
+				bobBurdens: bobBurdens,
+				aliceChartData: aliceChartData,
+				bobChartData: bobChartData,
+			},
+			() => {
+				// 数据更新后重新初始化图表
+				if (this.ecComponent) {
+					this.initChart();
+				}
+			}
+		);
+	},
+
+	toinputitems: function () {
+		wx.redirectTo({
+			url: "/pages/inputitems/inputitems",
+		});
+	},
+	tomychoice: function () {
+		wx.redirectTo({
+			url: "/pages/mychoice/mychoice",
+		});
+	},
+	topartnerchoice: function () {
+		wx.redirectTo({
+			url: "/pages/partnerchoice/partnerchoice",
+		});
+	},
+	toadvice: function () {
+		wx.redirectTo({
+			url: "/pages/advice/advice",
+		});
+	},
 });

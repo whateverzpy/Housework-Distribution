@@ -1,35 +1,41 @@
-const app = getApp()
+const app = getApp();
 
 Page({
 	data: {
 		first: 2,
 		ID: 1,
 		selected: app.globalData.selected,
+		preferences: app.globalData.preferences,
+		times: app.globalData.times,
 	},
-	onShow: function() {
+
+	onShow: function () {
 		this.setData({
-			selected: app.globalData.selected
-		})
+			selected: app.globalData.selected,
+			preferences: app.globalData.preferences[1],
+			times: app.globalData.times[1],
+		});
 	},
-	toinputitems: function() {
+
+	toinputitems: function () {
 		wx.redirectTo({
-			url: '/pages/inputitems/inputitems',
-		})
-		console.log(app.globalData.selected)
+			url: "/pages/inputitems/inputitems",
+		});
+		console.log(app.globalData.selected);
 	},
-	tomychoice: function() {
+	tomychoice: function () {
 		wx.redirectTo({
-			url: '/pages/mychoice/mychoice',
-		})
+			url: "/pages/mychoice/mychoice",
+		});
 	},
-	topartnerchoice: function() {
+	topartnerchoice: function () {
 		wx.redirectTo({
-			url: '/pages/partnerchoice/partnerchoice',
-		})
+			url: "/pages/partnerchoice/partnerchoice",
+		});
 	},
-	toadvice: function() {
+	toadvice: function () {
 		wx.redirectTo({
-			url: '/pages/advice/advice',
-		})
+			url: "/pages/advice/advice",
+		});
 	},
-})
+});
