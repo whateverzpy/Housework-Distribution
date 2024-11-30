@@ -10,10 +10,10 @@
 						</t-steps>
 				</view>
 				<view style="white-space: pre-line;">
-						我的分配：{{result[0]}}、{{aliceBurdens}}
-						同伴分配：{{result[1]}}、{{bobBurdens}}
+						我的分配：{{result[0]}}
+						同伴分配：{{result[1]}}
 						<view class="box">
-								<ec-canvas id="mychart-dom-pie" canvas-id="mychart-pie" ec="{{ ec1 }}"></ec-canvas>
+								<ec-canvas id="mychart-dom-pie" canvas-id="mychart-pie" ec="{{ ec }}"></ec-canvas>
 						</view>
 				</view>
 		</view>

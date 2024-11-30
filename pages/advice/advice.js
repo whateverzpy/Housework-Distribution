@@ -200,37 +200,43 @@ Page({
 		bobBurdens: {},
 		aliceChartData: [],
 		bobChartData: [],
-		ec1: {
+		ec: {
 			lazyLoad: true,
 		},
+		isLoaded: false,
 	},
 	onReady: function () {
-		// 页面渲染完成后初始化图表
+		// 获取图表组件实例
 		this.ecComponent = this.selectComponent("#mychart-dom-pie");
-		this.initChart();
 	},
+	// 初始化图表的方法
 	initChart: function () {
-		this.ecComponent.init((canvas, width, height) => {
-			chart = echarts.init(canvas, null, {
+		if (!this.ecComponent || !this.data.aliceChartData.length) {
+			return;
+		}
+
+		this.ecComponent.init((canvas, width, height, dpr) => {
+			const chart = echarts.init(canvas, null, {
 				width: width,
 				height: height,
+				devicePixelRatio: dpr,
 			});
-			canvas.setChart(chart);
 
-			// 立即设置图表数据
 			const option = {
 				title: {
+					text: "任务分配图表", // 添加标题
 					left: "center",
 				},
 				tooltip: {
 					trigger: "item",
+					formatter: "{a} <br/>{b}: {c} ({d}%)", // 改进提示框显示
 				},
 				series: [
 					{
+						name: "任务负担",
 						type: "pie",
 						radius: "65%",
 						center: ["50%", "50%"],
-						selectedMode: "single",
 						data: this.data.aliceChartData,
 						emphasis: {
 							itemStyle: {
@@ -244,10 +250,22 @@ Page({
 			};
 
 			chart.setOption(option);
+			this.chart = chart;
+
+			// 设置 isLoaded 为 true
+			this.setData({
+				isLoaded: true,
+			});
+
 			return chart;
 		});
 	},
+
 	onShow: function () {
+		// 清空并重新计算数据
+		aliceUtility.length = 0;
+		bobUtility.length = 0;
+
 		for (let i = 0; i < chores.length; i++) {
 			aliceUtility.push((3 - preferences[0][i]) * times[0][i]);
 			bobUtility.push((3 - preferences[1][i]) * times[1][i]);
@@ -275,10 +293,10 @@ Page({
 				bobChartData: bobChartData,
 			},
 			() => {
-				// 数据更新后重新初始化图表
-				if (this.ecComponent) {
+				// 数据更新完成后立即初始化图表
+				setTimeout(() => {
 					this.initChart();
-				}
+				}, 100); // 添加小延时确保组件已经完全渲染
 			}
 		);
 	},
