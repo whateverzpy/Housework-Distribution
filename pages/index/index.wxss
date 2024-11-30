@@ -1,9 +1,4 @@
-/* pages/index/index.wxss */
 .swiper {
-	--td-swiper-nav-dot-active-color: #0052d9;
-	--td-swiper-nav-dot-color: grey;
-}
-
-.button {
-  margin: 100rpx 40rpx;
+	--td-swiper-nav-dot-active-color: var(--primary-color);
+	--td-swiper-nav-dot-color: var(--secondary-color);
 }

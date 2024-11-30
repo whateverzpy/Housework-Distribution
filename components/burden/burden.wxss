@@ -1,15 +1,20 @@
-/* components/burden/burden.wxss */
 .burden {
 	display: flex;
 	height: 90rpx;
 	align-items: center;
+	padding: var(--spacing-sm);
+	background: #fff;
+	border-radius: var(--border-radius);
+	box-shadow: var(--shadow);
 }
 
-.text {
+.burden .text {
 	width: 150rpx;
 	text-align: center;
+	color: var(--text-primary);
 }
 
-.slider {
-	width: 300rpx;
+.burden .slider {
+	flex: 1;
+	margin: 0 var(--spacing-sm);
 }

@@ -1,8 +1,8 @@
 const swiperList = [
-  `/public/images/swaper1.jpg`,
-  `/public/images/swaper2.jpg`,
-  `/public/images/swaper3.jpg`,
-  `/public/images/swaper4.jpg`,
+  `https://miniprograme-1332491040.cos.ap-guangzhou.myqcloud.com/public/images/swaper1.jpg`,
+  `https://miniprograme-1332491040.cos.ap-guangzhou.myqcloud.com/public/images/swaper2.jpg`,
+  `https://miniprograme-1332491040.cos.ap-guangzhou.myqcloud.com/public/images/swaper3.jpg`,
+  `https://miniprograme-1332491040.cos.ap-guangzhou.myqcloud.com/public/images/swaper4.jpg`,
 ];
 
 Page({
@@ -11,7 +11,7 @@ Page({
     return {
       title: '家务分配',
       path: '/pages/index/index',
-      imageUrl: '/public/favicon.ico',
+      imageUrl: 'https://miniprograme-1332491040.cos.ap-guangzhou.myqcloud.com/public/favicon.ico',
       success: function (shareTickets) {
         // 分享成功的回调函数
         console.log('分享成功', shareTickets);

@@ -1,9 +1,75 @@
-/* pages/advice/advice.wxss */
+.allocation-container {
+	display: flex;
+	justify-content: space-between;
+	padding: var(--spacing-sm);
+	margin: var(--spacing-sm);
+	background: #fff;
+	border-radius: var(--border-radius);
+	box-shadow: var(--shadow);
+}
+
+.allocation-column {
+	flex: 1;
+	padding: 0 var(--spacing-sm);
+}
+
+.column-title {
+	font-size: 32rpx;
+	font-weight: bold;
+	text-align: center;
+	margin-bottom: var(--spacing-sm);
+	color: var(--text-primary);
+}
+
+.chores-list {
+	display: flex;
+	flex-direction: column;
+}
+
+.chore-item {
+	padding: var(--spacing-xs) 0;
+	font-size: 28rpx;
+	color: var(--text-secondary);
+	text-align: center;
+}
+
+.page-container {
+	width: 100%;
+	overflow-y: auto;
+	-webkit-overflow-scrolling: touch;
+}
+
 .box {
 	width: 100%;
-	height: 600rpx;
-	position: absolute;
-	margin-top: 30;
-	font-size: 42rpx;
+	height: 45vh;
+	padding: var(--spacing-sm);
+	box-sizing: border-box;
+	margin: var(--spacing-sm) 0;
+	position: relative;
+	background: #fff;
+	border-radius: var(--border-radius);
+	box-shadow: var(--shadow);
+	overflow: hidden;
+}
+
+.charts-container {
+	width: 100%;
+	padding: var(--spacing-sm);
+	box-sizing: border-box;
+	display: flex;
+	flex-direction: column;
+	gap: var(--spacing-md);
+}
+
+.chart-title {
+	font-size: 32rpx;
 	font-weight: bold;
+	text-align: center;
+	color: var(--text-primary);
+	margin-bottom: var(--spacing-sm);
+}
+
+.chart-wrapper {
+	width: 100%;
+	margin-bottom: var(--spacing-md);
 }

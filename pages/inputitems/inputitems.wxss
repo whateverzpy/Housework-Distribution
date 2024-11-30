@@ -1,31 +1,29 @@
-page {
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  /* background-color: black; */
-}
-
 .intro {
-  display: flex;
-  height: 160rpx;
-  align-items: center;
-  margin-top: -40rpx;
+	display: flex;
+	height: 160rpx;
+	align-items: center;
+	margin-top: -40rpx;
+	background: #fff;
+	border-radius: var(--border-radius);
+	padding: var(--spacing-sm);
+	box-shadow: var(--shadow);
 }
 
 .intro image {
-  height: 160rpx;
-  flex: 1;
+	height: 160rpx;
+	flex: 1;
 }
 
 .intro .content {
-  font-size: 60rpx;
-  font-weight: bold;
-  flex: 1.7;
+	font-size: 60rpx;
+	font-weight: bold;
+	flex: 1.7;
+	color: var(--text-primary);
 }
 
 .button {
-  margin: 0 32rpx 40rpx 32rpx;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 32rpx;
+	margin: var(--spacing-md);
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: var(--spacing-md);
 }

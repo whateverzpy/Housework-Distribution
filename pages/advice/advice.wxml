@@ -9,11 +9,33 @@
 								<t-step-item title="建议" />
 						</t-steps>
 				</view>
-				<view style="white-space: pre-line;">
-						我的分配：{{result[0]}}
-						同伴分配：{{result[1]}}
-						<view class="box">
-								<ec-canvas id="mychart-dom-pie" canvas-id="mychart-pie" ec="{{ ec }}"></ec-canvas>
+				<!-- 添加家务分配列表 -->
+				<view class="allocation-container">
+						<view class="allocation-column">
+								<view class="column-title">我的家务</view>
+								<view class="chores-list">
+										<view wx:for="{{result[0]}}" wx:key="index" class="chore-item">{{item}}</view>
+								</view>
+						</view>
+						<view class="allocation-column">
+								<view class="column-title">同伴家务</view>
+								<view class="chores-list">
+										<view wx:for="{{result[1]}}" wx:key="index" class="chore-item">{{item}}</view>
+								</view>
+						</view>
+				</view>
+				<view class="page-container">
+						<view class="charts-container">
+								<view class="chart-wrapper">
+										<view class="box">
+												<ec-canvas id="mychart-dom-pie1" canvas-id="pie1" ec="{{ ec1 }}"></ec-canvas>
+										</view>
+								</view>
+								<view class="chart-wrapper">
+										<view class="box">
+												<ec-canvas id="mychart-dom-pie2" canvas-id="pie2" ec="{{ ec2 }}"></ec-canvas>
+										</view>
+								</view>
 						</view>
 				</view>
 		</view>

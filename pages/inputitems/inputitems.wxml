@@ -1,35 +1,67 @@
 <scroll-view class="scrollarea" scroll-y type="list">
-	<view class="container">
-		<header></header>
-		<view class="steps">
-		<t-steps current="{{first}}">
-    <t-step-item title="选择家务" />
-		<t-step-item title="我的选择" bind:tap="tomychoice"/>
-		<t-step-item title="同伴选择" bind:tap="topartnerchoice"/>
-		<t-step-item title="建议" bind:tap="toadvice"/>
-		</t-steps>
+		<view class="container">
+				<header></header>
+				<view class="steps">
+						<t-steps current="{{first}}">
+								<t-step-item title="选择家务" />
+								<t-step-item title="我的选择" bind:tap="tomychoice" />
+								<t-step-item title="同伴选择" bind:tap="topartnerchoice" />
+								<t-step-item title="建议" bind:tap="toadvice" />
+						</t-steps>
+				</view>
+				<view class="intro">
+						<image src="https://miniprograme-1332491040.cos.ap-guangzhou.myqcloud.com/public/images/sensei.png" mode="aspectFit" />
+						<view class="content">请选择您的家务</view>
+				</view>
+				<form class="inputitems">
+						<t-checkbox-group name="checkbox" bind:change="onCheckAllChange">
+								<t-collapse>
+										<t-collapse-panel header="客厅" value="{{0}}">
+												<t-checkbox wx:for="{{checkbox1}}" wx:key="value" value="{{item.value}}" checked="{{item.checked}}" check-all="{{item['check-all']}}">
+														{{item.value}}
+												</t-checkbox>
+										</t-collapse-panel>
+										<t-collapse-panel header="厨房" value="{{1}}">
+												<t-checkbox wx:for="{{checkbox2}}" wx:key="value" value="{{item.value}}" checked="{{item.checked}}" check-all="{{item['check-all']}}">
+														{{item.value}}
+												</t-checkbox>
+										</t-collapse-panel>
+										<t-collapse-panel header="浴室" value="{{2}}">
+												<t-checkbox wx:for="{{checkbox3}}" wx:key="value" value="{{item.value}}" checked="{{item.checked}}" check-all="{{item['check-all']}}">
+														{{item.value}}
+												</t-checkbox>
+										</t-collapse-panel>
+										<t-collapse-panel header="卧室" value="{{3}}">
+												<t-checkbox wx:for="{{checkbox4}}" wx:key="value" value="{{item.value}}" checked="{{item.checked}}" check-all="{{item['check-all']}}">
+														{{item.value}}
+												</t-checkbox>
+										</t-collapse-panel>
+										<t-collapse-panel header="家庭卫生" value="{{4}}">
+												<t-checkbox wx:for="{{checkbox5}}" wx:key="value" value="{{item.value}}" checked="{{item.checked}}" check-all="{{item['check-all']}}">
+														{{item.value}}
+												</t-checkbox>
+										</t-collapse-panel>
+										<t-collapse-panel header="孩子" value="{{5}}">
+												<t-checkbox wx:for="{{checkbox6}}" wx:key="value" value="{{item.value}}" checked="{{item.checked}}" check-all="{{item['check-all']}}">
+														{{item.value}}
+												</t-checkbox>
+										</t-collapse-panel>
+										<t-collapse-panel header="婴儿" value="{{6}}">
+												<t-checkbox wx:for="{{checkbox7}}" wx:key="value" value="{{item.value}}" checked="{{item.checked}}" check-all="{{item['check-all']}}">
+														{{item.value}}
+												</t-checkbox>
+										</t-collapse-panel>
+								</t-collapse>
+						</t-checkbox-group>
+						<view class="button">
+								<t-button theme="light" block size="large" icon="refresh" type="reset" bindtap="resetCheckbox">
+										重置
+								</t-button>
+								<t-button theme="primary" block size="large" type="submit" bindtap="tomychoice">
+										下一步
+										<t-icon name="chevron-right" slot="suffix" size="48rpx"></t-icon>
+								</t-button>
+						</view>
+				</form>
 		</view>
-		<view class="intro">
-			<image src="/public/images/sensei.png" mode="aspectFit"/>
-			<view class="content">请选择您的家务</view>
-		</view>
-		<form class="inputitems">
-		<t-checkbox-group name="checkbox" bind:change="onCheckAllChange">
-			<t-collapse>
-				<t-collapse-panel header="标题1" value="{{0}}">
-					<t-checkbox wx:for="{{checkbox1}}" wx:key="value" value="{{item.value}}" checked="{{item.checked}}" check-all="{{item['check-all']}}">{{item.value}}</t-checkbox>
-				</t-collapse-panel>
-				<t-collapse-panel header="标题2" value="{{1}}">
-					<t-checkbox wx:for="{{checkbox2}}" wx:key="value" value="{{item.value}}" checked="{{item.checked}}" check-all="{{item['check-all']}}">{{item.value}}</t-checkbox>
-				</t-collapse-panel>
-			</t-collapse>
-		</t-checkbox-group>
-		<view class="button">
-			<t-button theme="light" block size="large" icon="refresh" type="reset" bindtap="resetCheckbox">重置</t-button>
-			<t-button theme="primary" block size="large" type="submit" bindtap="tomychoice">
-			下一步<t-icon name="chevron-right" slot="suffix" size="48rpx"></t-icon>
-			</t-button>
-		</view>
-		</form>
-	</view>
 </scroll-view>

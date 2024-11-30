@@ -1,12 +1,45 @@
-/**app.wxss**/
+page {
+	--primary-color: #0052d9;
+	--secondary-color: #666666;
+	--background-color: #fff;
+	--text-primary: #333333;
+	--text-secondary: #666666;
+	--border-radius: 12rpx;
+	--shadow: 0 2rpx 12rpx rgba(0, 0, 0, 0.1);
+	--spacing-xs: 10rpx;
+	--spacing-sm: 20rpx;
+	--spacing-md: 32rpx;
+	--spacing-lg: 40rpx;
+
+	min-height: 100vh;
+	background: var(--background-color);
+	color: var(--text-primary);
+	font-size: 28rpx;
+}
+
+/* 通用布局类 */
 .container {
-  display: flex;
-  flex-direction: column;
-  /* font-family: "楷体"; */
-  /* background-color: black; */
+	padding: var(--spacing-md);
+}
+
+.flex-row {
+	display: flex;
+	align-items: center;
+}
+
+.flex-column {
+	display: flex;
+	flex-direction: column;
+}
+
+.flex-center {
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 .steps {
-  padding: 32rpx 0;
-  margin: -60rpx 0 30rpx 0;
+	padding: 40rpx 0; /* 增加上下间距 */
+	margin: 20rpx 0; /* 与相邻元素保持间距 */
+	background: #fff; /* 可选：添加背景色提升视觉分层 */
 }

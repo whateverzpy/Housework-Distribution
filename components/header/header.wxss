@@ -1,7 +1,7 @@
+/* header.wxss */
 .logo {
-  margin-top: -120rpx;
-  margin-bottom: 200rpx;
-  height: 180rpx;
-  display: flex;
-  justify-content: center;
+	margin: -120rpx auto 200rpx;
+	height: 180rpx;
+	display: flex;
+	justify-content: center;
 }

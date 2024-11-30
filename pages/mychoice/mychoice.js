@@ -16,7 +16,7 @@ Page({
 			times: app.globalData.times[0],
 		});
 	},
-	
+
 	toinputitems: function () {
 		wx.redirectTo({
 			url: "/pages/inputitems/inputitems",

@@ -1,6 +1,5 @@
 {
   "usingComponents": {
-    "t-tree-select": "tdesign-miniprogram/tree-select/tree-select",
     "t-collapse": "tdesign-miniprogram/collapse/collapse",
     "t-collapse-panel": "tdesign-miniprogram/collapse-panel/collapse-panel",
     "t-checkbox": "tdesign-miniprogram/checkbox/checkbox",
